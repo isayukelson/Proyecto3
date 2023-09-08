@@ -1,0 +1,30 @@
+
+.main-ver-todas-las-peliculas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.peliculas-container {
+  display: flex;
+  flex-wrap: wrap; 
+  margin-bottom: 10px; 
+}
+
+.button-cargar-peliculas {
+  font-size: 14px; 
+  padding: 5px 10px; 
+  margin-left: auto; 
+  /*display: inline-block;*/
+}
+
+
+
+
+  
+  
+  
+
+
+  

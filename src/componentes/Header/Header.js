@@ -1,6 +1,8 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
+import "./Header.css"; 
+import FormBusqueda from "../FormBusqueda/FormBusqueda";; 
+
 
 function Header() {
   return (
@@ -14,6 +16,9 @@ function Header() {
           <li><Link to="/todas-las-series">Ver todas series</Link></li>
         </ul>
       </nav>
+      {/*<div className="search-bar">
+        <FormBusqueda />
+  </div>*/}
     </header>
   );
 }

@@ -63,12 +63,16 @@ class VerTodasSeries extends Component {
             <>
                 <Header />
                 <FormBusqueda />
-                <main className="main-ver-todas-las-peliculas">
-                    {
-                        this.state.series.map((serie, index) => <Card key={index} pelicula={serie} />)
-                    }
-                    <button onClick={() => this.pasarPagina()}>Cargar más peliculas</button>
+                <main className="main-ver-todas-las-peliculas"> 
+                <div className="peliculas-container">
+                 {
+                      this.state.series.map((serie, index) => <Card key={index} pelicula={serie} />)
+                }
+                </div>
+
+                    <button className="button-cargar-series" onClick={() => this.pasarPagina()}>Cargar más series</button> 
                 </main>
+
                 <Footer />
             </>
         )

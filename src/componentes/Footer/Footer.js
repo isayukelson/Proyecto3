@@ -1,9 +1,10 @@
 import React from 'react';
+import './Footer.css'; 
 
 function Footer() {
   return (
-    <footer>
-      <p>Integrantes del Equipo: [Yukelson Isabella] & [Moises Victoria]</p>
+    <footer className="footer"> 
+      <p>Integrantes del Equipo: Yukelson Isabella & Moises Victoria</p>
     </footer>
   );
 }

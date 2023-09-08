@@ -1,0 +1,14 @@
+
+.section-home-peliculas-populares,
+.section-home-series-populares {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+}
+
+
+.article-home-peliculas-populares {
+  flex: 1; 
+  margin: 10px; 
+ 
+}

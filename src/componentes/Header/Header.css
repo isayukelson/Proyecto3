@@ -1,0 +1,40 @@
+/* Estilos para el encabezado */
+header {
+    background-color: #1732ff; 
+    color: #fff; 
+    padding: 10px 0; 
+    text-align: center;
+  }
+  
+  .logo {
+    font-size: 24px; 
+    font-weight: bold; 
+  }
+  
+  nav ul {
+    list-style: none; 
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline;
+    margin-right: 20px; 
+  }
+  
+  nav a {
+    text-decoration: none; 
+    color: #fff;
+  }
+
+  .menu-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold; 
+    margin: 0 100px; 
+    transition: color 0.2s;
+    
+  }
+  .menu-link:hover {
+    color: #f00; 
+  }
+  
