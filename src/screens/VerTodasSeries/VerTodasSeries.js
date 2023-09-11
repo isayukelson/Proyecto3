@@ -26,7 +26,7 @@ class VerTodasSeries extends Component {
                     series: data.results,
                 })
 
-                console.log("Ya están las pelis")
+                console.log("Ya están las series")
             })
             .catch(error => console.log(error))
     }
@@ -38,24 +38,24 @@ class VerTodasSeries extends Component {
                 .then(response => response.json())
                 .then(data => {
                     
-                    let pelisNuevas = data.results
+                    let seriesNuevas = data.results
                     
                     this.setState({ 
-                        series: this.state.peliculas.concat(pelisNuevas)
+                        series: this.state.series.concat(seriesNuevas)
                     })
                     
                     this.setState({
                         numeroPagina: this.state.numeroPagina + 1
                     })
 
-                    console.log("Ya están las pelis")
+                    console.log("Ya están las series")
                 })
                 .catch(error => console.log(error))
         } else {
             alert("No hay más páginas")
         }
 
-        console.log(this.state.peliculas)
+        console.log(this.state.series)
     }
 
     render() {
