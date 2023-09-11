@@ -10,7 +10,11 @@ class NotFound extends Component {
 
     render() {
         return (
-            <></>
+            <>
+            <div className= "ErrorFound">
+                <img src="./public/200w.gif"></img>
+            </div>
+            </>
         )
     }
 }
