@@ -29,13 +29,13 @@ class Favoritos extends Component {
         if (seriesFavoritas === null) {
             seriesFavoritas = []
         }
-        
+        console.log(peliculasFavoritas);
         peliculasFavoritas.forEach(pelicula => {
             fetch(`https://api.themoviedb.org/3/movie/${pelicula}?api_key=7e2125641ec3ddbc6ebddb7479ee611c&language=es-ES`)
             .then(response => response.json())
             .then(data => {
                 let peliculasFavoritas = this.state.peliculasFavoritas
-                peliculasFavoritas.splice(peliculasFavoritas.indexOf(pelicula), 1, data)
+                peliculasFavoritas.splice(peliculasFavoritas.indexOf(pelicula), 0, data)
                 this.setState({ peliculasFavoritas: peliculasFavoritas })
             })
             .catch(error => console.log(error))
