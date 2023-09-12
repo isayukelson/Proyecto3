@@ -35,7 +35,8 @@ class Favoritos extends Component {
             .then(response => response.json())
             .then(data => {
                 let peliculasFavoritas = this.state.peliculasFavoritas
-                peliculasFavoritas.splice(peliculasFavoritas.indexOf(pelicula), 0, data)
+                peliculasFavoritas.push(data);
+                //peliculasFavoritas.splice(peliculasFavoritas.indexOf(pelicula), 1, data)
                 this.setState({ peliculasFavoritas: peliculasFavoritas })
             })
             .catch(error => console.log(error))
@@ -46,7 +47,8 @@ class Favoritos extends Component {
             .then(response => response.json())
             .then(data => {
                 let seriesFavoritas = this.state.seriesFavoritas
-                seriesFavoritas.splice(seriesFavoritas.indexOf(serie), 1, data)
+                seriesFavoritas.push(data);
+                //seriesFavoritas.splice(seriesFavoritas.indexOf(serie), 1, data)
                 this.setState({ seriesFavoritas: seriesFavoritas })
             })
             .catch(error => console.log(error))

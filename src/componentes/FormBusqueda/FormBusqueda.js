@@ -1,41 +1,62 @@
 import React, { Component } from "react";
+import Card from "../Card/Card"; 
 
-import { Link } from "react-router-dom";
+class FormBusqueda extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      busqueda: "",
+      resultados: [],
+    };
+  }
 
-import "./FormBusqueda.css";
+  guardarBusqueda(event) {
+    this.setState({
+      busqueda: event.target.value,
+    });
+  }
 
-class FormBusqueda extends Component{
-    constructor(props) {
-        super(props)
-        this.state = {
-            busqueda: "",
-        }
-    }
+  enviarBusqueda(event) {
+    event.preventDefault();
 
-    guardarBusqueda(event) {
-        this.setState({
-            busqueda: event.target.value
+    if (this.state.busqueda === "") {
+      console.log("No has introducido nada");
+    } else {
+      
+      fetch(
+        `https://api.themoviedb.org/3/search/multi?api_key=7e2125641ec3ddbc6ebddb7479ee611c&language=es-ES&query=${this.state.busqueda}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({
+            resultados: data.results,
+          });
         })
+        .catch((error) => console.log(error));
     }
+  }
 
-    enviarBusqueda(event) {
-        event.preventDefault()
-
-        if (this.state.busqueda === "") {
-            console.log("No has introducido nada")
-        } else {
-            console.log("Busqueda " + this.state.busqueda)
-        }
-    }
-
-    render() {
-        return (
-            <form onSubmit={(event) => this.enviarBusqueda(event)} className="form-busqueda">
-                <input onChange={(event) => this.guardarBusqueda(event)} type="text" placeholder="Buscar..." className="input-busqueda" value={this.state.busqueda}/>
-                <button type="submit" className="boton-busqueda">Buscar</button>
-            </form>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <form onSubmit={(event) => this.enviarBusqueda(event)}>
+          <input
+            onChange={(event) => this.guardarBusqueda(event)}
+            type="text"
+            placeholder="Buscar..."
+            value={this.state.busqueda}
+          />
+          <button type="submit">Buscar</button>
+        </form>
+        <div>
+          {this.state.resultados.map((resultado, index) => (
+            // Mapea los resultados y muestra cada uno utilizando tu componente de tarjeta
+            <Card key={index} pelicula={resultado} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default FormBusqueda;
