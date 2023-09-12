@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
 import { Link } from "react-router-dom";
-
 import "./Card.css";
 
 class Card extends Component {
@@ -35,8 +33,9 @@ class Card extends Component {
             this.setState({ favorita: false })
         }
     }
-
+    
     agregaQuitaFavoritos(id) {
+        //console.log(`Clic en "Quitar de favoritos" para el ID: ${id}`);
         let peliculasFavoritas = localStorage.getItem("peliculasFavoritas")
         peliculasFavoritas = JSON.parse(peliculasFavoritas)
         let seriesFavoritas = localStorage.getItem("seriesFavoritas")
@@ -54,19 +53,30 @@ class Card extends Component {
             peliculasFavoritas.splice(peliculasFavoritas.indexOf(id), 1)
             localStorage.setItem("peliculasFavoritas", JSON.stringify(peliculasFavoritas))
             this.setState({ favorita: false })
+            
+            console.log('Estado actualizado a favorita: false');
+
         } else if (seriesFavoritas.includes(id)) {
             seriesFavoritas.splice(seriesFavoritas.indexOf(id), 1)
             localStorage.setItem("seriesFavoritas", JSON.stringify(seriesFavoritas))
             this.setState({ favorita: false })
+            
+            console.log('Estado actualizado a favorita: false');
+
         } else {
             if (this.props.pelicula.name) {
                 seriesFavoritas.push(id)
                 localStorage.setItem("seriesFavoritas", JSON.stringify(seriesFavoritas))
                 this.setState({ favorita: true })
+              
+                console.log('Estado actualizado a favorita: true');
+
             } else {
                 peliculasFavoritas.push(id)
                 localStorage.setItem("peliculasFavoritas", JSON.stringify(peliculasFavoritas))
                 this.setState({ favorita: true })
+                
+                console.log('Estado actualizado a favorita: true');
             }
         }
     }
