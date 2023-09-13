@@ -18,6 +18,7 @@ class Favoritos extends Component {
     componentDidMount() {
         let peliculasFavoritas = localStorage.getItem("peliculasFavoritas");
         peliculasFavoritas = JSON.parse(peliculasFavoritas);
+       
         let seriesFavoritas = localStorage.getItem("seriesFavoritas");
         seriesFavoritas = JSON.parse(seriesFavoritas);
 

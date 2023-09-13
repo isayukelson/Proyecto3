@@ -12,6 +12,7 @@ class NotFound extends Component {
         return (
             <>
             <div className= "ErrorFound">
+                <h1> 404 - Página no encontrada</h1>
                 <img src="./200w.gif"></img>
             </div>
             </>
