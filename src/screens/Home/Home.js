@@ -26,7 +26,6 @@ class Home extends Component {
                 for (let i = 0; i < 5; i++) {
                     arrayPeliculas.push(data.results[i])
                 }
-
                 this.setState({
                     peliculas: arrayPeliculas
                 })
@@ -61,21 +60,21 @@ class Home extends Component {
                     <h1>Películas & Series Populares</h1>
                     <div className="card-container">
                         {this.state.peliculas.map((pelicula, index) => (
-                            <Card
-                                key={index}
-                                pelicula={pelicula}
-                                mostrarBotonVerMas={true} // Mostrar botón Ver más
-                                mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
-                            />
+                         <Card
+                        key={index}
+                         pelicula={pelicula}
+                        mostrarBotonVerMas={true} // Mostrar botón Ver más
+                        mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
+                        />
                         ))}
-
+                        
                         {this.state.series.map((serie, index) => (
-                            <Card
-                                key={index}
-                                pelicula={serie}
-                                mostrarBotonVerMas={true} // Mostrar botón Ver más
-                                mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
-                            />
+                        <Card
+                            key={index}
+                            pelicula={serie}
+                         mostrarBotonVerMas={true} // Mostrar botón Ver más
+                            mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
+                        />
                         ))}
                     </div>
                 </main>
@@ -84,5 +83,5 @@ class Home extends Component {
         );
     }
 }
-
+                        
 export default Home;
