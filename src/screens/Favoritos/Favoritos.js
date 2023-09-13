@@ -29,7 +29,7 @@ class Favoritos extends Component {
         if (seriesFavoritas === null) {
             seriesFavoritas = []
         }
-        
+        console.log(peliculasFavoritas);
         peliculasFavoritas.forEach(pelicula => {
             fetch(`https://api.themoviedb.org/3/movie/${pelicula}?api_key=7e2125641ec3ddbc6ebddb7479ee611c&language=es-ES`)
             .then(response => response.json())

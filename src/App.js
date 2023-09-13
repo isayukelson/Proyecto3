@@ -21,7 +21,7 @@ function App() {
           <Route path="/todas-las-peliculas" component={VerTodasPeliculas} />
           <Route path="/todas-las-series" component={VerTodasSeries} />
           <Route path="/resultado-busqueda" component={ResultadoBusqueda} />
-          <Route path="*" component={NotFound} />
+          <Route path="" component={NotFound} />
         </Switch>
       </BrowserRouter>
     </div>

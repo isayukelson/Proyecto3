@@ -86,6 +86,8 @@ class Card extends Component {
             <article className="article-home-peliculas-populares">
                 <img src={`https://image.tmdb.org/t/p/w342${this.props.pelicula.poster_path}`} alt={this.props.pelicula.title} />
                 <h2>{this.props.pelicula.title}</h2>
+                <h2>{this.props.pelicula.name}</h2>
+
                 {
                     this.state.vermas === true ?
                     <section className="article-home-peliculas-populares-descripcion">
