@@ -19,8 +19,8 @@ class ResultadoBusqueda extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({
-                    resultados: data.data
-                })
+                    resultados: data.results,
+                });
             })
             .catch(error => console.log(error))
     }
@@ -32,7 +32,7 @@ class ResultadoBusqueda extends Component {
                 <FormBusqueda />
                 {
                     this.state.busqueda !== "" ?
-                        <p>{this.state.busqueda}</p> :
+                        <p>Resultados de busqueda para: {this.state.busqueda}</p> :
                         <p>Cargando...</p>
                 }
                 {
@@ -40,10 +40,9 @@ class ResultadoBusqueda extends Component {
                         this.state.resultados.map((resultado, i) =>
 
                             <Card
-                                key={i}
-                                id={resultado.id}
-                                nombre={resultado.title}
-                                imagen={resultado.poster_path}
+                                pelicula={resultado}
+                                serie={resultado}
+                                
                             />) :
                         <p>Cargando...</p>
                 }
