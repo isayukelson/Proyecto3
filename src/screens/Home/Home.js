@@ -27,8 +27,8 @@ class Home extends Component {
                     arrayPeliculas.push(data.results[i])
                 }
 
-                this.setState({ 
-                    peliculas: arrayPeliculas 
+                this.setState({
+                    peliculas: arrayPeliculas
                 })
 
             })
@@ -37,58 +37,52 @@ class Home extends Component {
         fetch("https://api.themoviedb.org/3/tv/popular?api_key=7e2125641ec3ddbc6ebddb7479ee611c&language=es-ES&page=1")
             .then(response => response.json())
             .then(data => {
-                
+
                 let arraySeries = []
 
                 for (let i = 0; i < 5; i++) {
                     arraySeries.push(data.results[i])
                 }
 
-                this.setState({ 
-                    series: arraySeries 
+                this.setState({
+                    series: arraySeries
                 })
 
             })
             .catch(error => console.log(error))
-       
     }
 
     render() {
         return (
-          <>
-            <Header />
-            <FormBusqueda />
-            <main className="main-home">
-              <h1>Películas & Series Populares</h1>
-              <div className="card-container">
-                {this.state.peliculas.map((pelicula, index) => (
-            
-                  <Card
-                    key={index}
-                    pelicula={pelicula}
-                    mostrarBotonVerMas={true} // Mostrar botón Ver más
-                    mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
-                  /> 
-                 
-                ))}
-                
-            {this.state.series.map((contenido, index) => (
-                 <Card
-                  key={index}
-                  pelicula={contenido}
-                  mostrarBotonVerMas={true} // Mostrar botón Ver más
-                  mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
-              /> 
-             
-            ))}
+            <>
+                <Header />
+                <FormBusqueda />
+                <main className="main-home">
+                    <h1>Películas & Series Populares</h1>
+                    <div className="card-container">
+                        {this.state.peliculas.map((pelicula, index) => (
+                            <Card
+                                key={index}
+                                pelicula={pelicula}
+                                mostrarBotonVerMas={true} // Mostrar botón Ver más
+                                mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
+                            />
+                        ))}
 
-
-              </div>
-            </main>
-            <Footer />
-          </>
+                        {this.state.series.map((serie, index) => (
+                            <Card
+                                key={index}
+                                pelicula={serie}
+                                mostrarBotonVerMas={true} // Mostrar botón Ver más
+                                mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
+                            />
+                        ))}
+                    </div>
+                </main>
+                <Footer />
+            </>
         );
-      }
     }
+}
 
 export default Home;
