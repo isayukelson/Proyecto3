@@ -7,7 +7,7 @@ import FormBusqueda from "../FormBusqueda/FormBusqueda";;
 function Header() {
   return (
     <header>
-      <div className="logo">Nombre</div>
+      <div className="logo">RePelis</div>
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>

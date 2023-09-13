@@ -69,7 +69,8 @@ class Favoritos extends Component {
             // Actualiza el estado de peliculasFavoritas en el componente
             this.setState({ peliculasFavoritas });
         }
-    }
+     }
+    
 
     render() {
         return (

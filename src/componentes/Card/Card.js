@@ -39,6 +39,7 @@ class Card extends Component {
         //console.log(`Clic en "Quitar de favoritos" para el ID: ${id}`);
         let peliculasFavoritas = localStorage.getItem("peliculasFavoritas")
         peliculasFavoritas = JSON.parse(peliculasFavoritas)
+        
         let seriesFavoritas = localStorage.getItem("seriesFavoritas")
         seriesFavoritas = JSON.parse(seriesFavoritas)
 
