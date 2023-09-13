@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Header from "../../componentes/Header/Header";
 import Footer from "../../componentes/Footer/Footer";
 import FormBusqueda from "../../componentes/FormBusqueda/FormBusqueda";
@@ -14,6 +13,7 @@ class ResultadoBusqueda extends Component {
             resultados: []
         }
     }
+
     componentDidMount() {
         fetch(`https://api.themoviedb.org/3/search/multi?api_key=7e2125641ec3ddbc6ebddb7479ee611c&language=es-ES&query=${this.props.match.params.busqueda}`)
             .then(response => response.json())
@@ -30,24 +30,24 @@ class ResultadoBusqueda extends Component {
             <>
                 <Header />
                 <FormBusqueda />
-                {
-                    this.state.busqueda !== "" ?
-                        <p>Resultados de busqueda para: {this.state.busqueda}</p> :
-                        <p>Cargando...</p>
+                {this.state.busqueda !== "" ?
+                    <p>Resultados de búsqueda para: {this.state.busqueda}</p> :
+                    <p>Cargando...</p>
                 }
-                {
-                    this.state.resultados.length > 0 ?
-                        this.state.resultados.map((resultado, i) =>
-
+                {this.state.resultados.length > 0 ?
+                    <div className="resultados-grid">
+                        {this.state.resultados.map((resultado, i) => (
                             <Card
+                                key={i}
                                 pelicula={resultado}
                                 serie={resultado}
-                                
-                            />) :
-                        <p>Cargando...</p>
+                            />
+                        ))}
+                    </div>
+                    :
+                    <p>Cargando...</p>
                 }
                 <Footer />
-
             </>
         )
     }
