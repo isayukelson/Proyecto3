@@ -38,19 +38,20 @@ class FormBusqueda extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form-busqueda">
         <form onSubmit={(event) => this.enviarBusqueda(event)}>
           <input
             onChange={(event) => this.guardarBusqueda(event)}
             type="text"
             placeholder="Buscar..."
             value={this.state.busqueda}
+            className="input-busqueda"
           />
-          <button type="submit">Buscar</button>
+          <button type="submit" className="boton-busqueda">Buscar</button>
         </form>
-        <div>
+        <div className="resultados-container">
           {this.state.resultados.map((resultado, index) => (
-            // Mapea los resultados y muestra cada uno utilizando tu componente de tarjeta
+            // Mapea los resultados y muestra cada uno utilizando el component Card
             <Card key={index} pelicula={resultado} />
           ))}
         </div>

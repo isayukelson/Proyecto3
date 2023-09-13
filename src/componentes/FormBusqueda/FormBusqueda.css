@@ -1,31 +1,9 @@
-/* Estilos para centrar la barra de búsqueda verticalmente */
-.form-busqueda {
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Estilos para la barra de búsqueda */
-  .input-busqueda {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    margin-right: 10px; /* Espacio entre la barra de búsqueda y el botón */
-  }
-  
-  /* Estilos para el botón de búsqueda */
-  .boton-busqueda {
-    background-color: #007bff; /* Cambia esto al color deseado */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  /* Cambiar el color del botón al pasar el mouse */
-  .boton-busqueda:hover {
-    background-color: #0056b3; /* Cambia esto al color deseado al pasar el mouse */
-  }
-  
+  .resultados-container {
+  display: flex; 
+  overflow-x: auto; /*  desplazamiento horizontal si hay muchos resultados */
+}
+
+
+.card {
+  margin-right: 10px; 
+}
