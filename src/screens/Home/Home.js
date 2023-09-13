@@ -69,8 +69,6 @@ class Home extends Component {
                         {
                             this.state.series.map((serie, index) => {
 
-                                
-
                                 return (
                                     <Card pelicula={serie} key={index} />
                                 )
