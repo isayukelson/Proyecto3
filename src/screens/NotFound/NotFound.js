@@ -12,7 +12,7 @@ class NotFound extends Component {
         return (
             <>
             <div className= "ErrorFound">
-                <img src="./public/200w.gif"></img>
+                <img src="./200w.gif"></img>
             </div>
             </>
         )

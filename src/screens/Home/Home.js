@@ -50,38 +50,45 @@ class Home extends Component {
 
             })
             .catch(error => console.log(error))
+       
     }
 
     render() {
         return (
-            <>
-                <Header />
-                <FormBusqueda />
-                <main className="main-home">
-                    <h1>Películas populares</h1>
-                    <section className="section-home-peliculas-populares">
-                        {
-                            this.state.peliculas.map((pelicula, index) => <Card pelicula={pelicula} key={index} />)
-                        }
-                    </section>
-                    <h1>Series populares</h1>
-                    <section className="section-home-series-populares">
-                        {
-                            this.state.series.map((serie, index) => {
+          <>
+            <Header />
+            <FormBusqueda />
+            <main className="main-home">
+              <h1>Películas & Series Populares</h1>
+              <div className="card-container">
+                {this.state.peliculas.map((pelicula, index) => (
+            
+                  <Card
+                    key={index}
+                    pelicula={pelicula}
+                    mostrarBotonVerMas={true} // Mostrar botón Ver más
+                    mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
+                  /> 
+                 
+                ))}
+                
+            {this.state.series.map((contenido, index) => (
+                 <Card
+                  key={index}
+                  pelicula={contenido}
+                  mostrarBotonVerMas={true} // Mostrar botón Ver más
+                  mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
+              /> 
+             
+            ))}
 
-                                
 
-                                return (
-                                    <Card pelicula={serie} key={index} />
-                                )
-                            })
-                        }
-                    </section>
-                </main>
-                <Footer />
-            </>
-        ) 
+              </div>
+            </main>
+            <Footer />
+          </>
+        );
+      }
     }
-}
 
 export default Home;
