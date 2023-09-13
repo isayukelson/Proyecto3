@@ -15,7 +15,7 @@ class DetalleSerie extends Component {
 
     componentDidMount() {
         let serie = this.props.match.params.id
-        fetch(`https://api.themoviedb.org/3/movie/${serie}?api_key=7e2125641ec3ddbc6ebddb7479ee611c&language=es-ES`)
+        fetch(`https://api.themoviedb.org/3/tv/${serie}?api_key=7e2125641ec3ddbc6ebddb7479ee611c&language=es-ES`)
         .then(response => response.json())
         .then(data => {
             this.setState({ serie: data })
@@ -35,7 +35,7 @@ class DetalleSerie extends Component {
                     <img src={`https://image.tmdb.org/t/p/w342${this.state.serie.poster_path}`} alt={this.state.serie.title} />
                     <ul>
                         <li>Ranking: {this.state.serie.vote_average} </li>
-                        <li>Estreno: {this.state.serie.release_date}</li>
+                        <li>Estreno: {this.state.serie.first_air_date}</li>
                         <li>Sinopsis: {this.state.serie.overview}</li>
                     </ul>
                     <button onClick={() => this.agregaQuitaFavoritos(this.props.pelicula)}>{this.state.favorita ? "Quitar de favoritos" : "Agregar a favoritos"}</button>
