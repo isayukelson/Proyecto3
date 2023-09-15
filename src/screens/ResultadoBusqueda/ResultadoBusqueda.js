@@ -24,6 +24,22 @@ class ResultadoBusqueda extends Component {
             })
             .catch(error => console.log(error))
     }
+    componentDidUpdate(prevProps) {
+        // Este método  cuando las props o el estado cambien
+        //  verifica si la búsqueda  cambio 
+        if (this.props.match.params.busqueda !== prevProps.match.params.busqueda) {
+            const nuevaBusqueda = this.props.match.params.busqueda;
+            
+            fetch(`https://api.themoviedb.org/3/search/multi?api_key=7e2125641ec3ddbc6ebddb7479ee611c&language=es-ES&query=${nuevaBusqueda}`)
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({
+                        resultados: data.results,
+                    });
+                })
+                .catch(error => console.log(error))
+        }
+    }
 
     render() {
         return (

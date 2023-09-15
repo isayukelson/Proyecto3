@@ -12,22 +12,16 @@ class Favoritos extends Component {
         this.state = {
             peliculasFavoritas: [],
             seriesFavoritas: [],
+            seActualizo: false
         }
     }
     
-    componentDidMount() {
+    fetchPeliculas() {
         let peliculasFavoritas = localStorage.getItem("peliculasFavoritas");
         peliculasFavoritas = JSON.parse(peliculasFavoritas);
-       
-        let seriesFavoritas = localStorage.getItem("seriesFavoritas");
-        seriesFavoritas = JSON.parse(seriesFavoritas);
-
+            
         if (peliculasFavoritas === null) {
             peliculasFavoritas = [];
-        }
-
-        if (seriesFavoritas === null) {
-            seriesFavoritas = [];
         }
 
         peliculasFavoritas.forEach(pelicula => {
@@ -40,6 +34,15 @@ class Favoritos extends Component {
             })
             .catch(error => console.log(error));
         });
+    }
+
+    fetchSeries() {
+        let seriesFavoritas = localStorage.getItem("seriesFavoritas");
+        seriesFavoritas = JSON.parse(seriesFavoritas);
+
+        if (seriesFavoritas === null) {
+            seriesFavoritas = [];
+        }        
 
         seriesFavoritas.forEach(serie => {
             fetch(`https://api.themoviedb.org/3/tv/${serie}?api_key=7e2125641ec3ddbc6ebddb7479ee611c&language=es-ES`)
@@ -53,24 +56,23 @@ class Favoritos extends Component {
         });
     }
 
-    agregarPeliculaAFavoritos(peliculaId) {
-        let peliculasFavoritas = localStorage.getItem("peliculasFavoritas");
-        peliculasFavoritas = JSON.parse(peliculasFavoritas);
-
-        if (!peliculasFavoritas) {
-            peliculasFavoritas = [];
-        }
-
-        if (!peliculasFavoritas.includes(peliculaId)) {
-            peliculasFavoritas.push(peliculaId);
-
-            localStorage.setItem("peliculasFavoritas", JSON.stringify(peliculasFavoritas));
-
-            // Actualiza el estado de peliculasFavoritas en el componente
-            this.setState({ peliculasFavoritas });
-        }
-     }
+    seActualizoEstado() {
+        this.setState({ seActualizo: !this.state.seActualizo });
+    }
     
+    componentDidMount() {
+        this.fetchPeliculas();
+        this.fetchSeries();
+    }
+
+    componentDidUpdate() {
+        if (this.state.seActualizo) {
+            this.setState({ peliculasFavoritas: [], seriesFavoritas: [] });
+            this.fetchPeliculas();
+            this.fetchSeries();
+            this.seActualizoEstado();
+        }
+    }
 
     render() {
         return (
@@ -84,7 +86,7 @@ class Favoritos extends Component {
                             this.state.peliculasFavoritas.length === 0 ?
                             <p>No tienes películas favoritas</p> :
                             <>
-                                {this.state.peliculasFavoritas.map((pelicula, index) => <Card pelicula={pelicula} key={index} />)}
+                                {this.state.peliculasFavoritas.map((pelicula, index) => <Card pelicula={pelicula} key={index} mostrarBotonVerMas={true} mostrarEnlaceVerDetalles={true} seActualizoEstado={this.seActualizoEstado.bind(this)} />)}
                             </>
                         }
                     </section>
@@ -94,7 +96,7 @@ class Favoritos extends Component {
                             this.state.seriesFavoritas.length === 0 ?
                             <p>No tienes series favoritas</p> :
                             <>
-                                {this.state.seriesFavoritas.map((serie, index) => <Card pelicula={serie} key={index} />)}
+                                {this.state.seriesFavoritas.map((serie, index) => <Card pelicula={serie} key={index} mostrarBotonVerMas={true} mostrarEnlaceVerDetalles={true} seActualizoEstado={this.seActualizoEstado.bind(this)} />)}
                             </>
                         }
                     </section>

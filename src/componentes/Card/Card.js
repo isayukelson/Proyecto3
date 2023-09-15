@@ -81,6 +81,12 @@ class Card extends Component {
                 console.log('Estado actualizado a favorita: true');
             }
         }
+        
+        if (this.props.seActualizoEstado) {
+          this.props.seActualizoEstado()
+          console.log('Se actualizó el estado en favoritos');
+        }
+
     }
 
     render() {
