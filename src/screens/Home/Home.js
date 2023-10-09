@@ -61,10 +61,10 @@ class Home extends Component {
                     <div className="card-container">
                         {this.state.peliculas.map((pelicula, index) => (
                          <Card
-                        key={index}
+                        key={index} //se asigna una key única utilizando el índice
                          pelicula={pelicula}
-                        mostrarBotonVerMas={true} // Mostrar botón Ver más
-                        mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
+                        mostrarBotonVerMas={true} 
+                        mostrarEnlaceVerDetalles={true} 
                         />
                         ))}
                         
@@ -72,8 +72,8 @@ class Home extends Component {
                         <Card
                             key={index}
                             pelicula={serie}
-                         mostrarBotonVerMas={true} // Mostrar botón Ver más
-                            mostrarEnlaceVerDetalles={true} // Mostrar enlace Ver detalles
+                         mostrarBotonVerMas={true} 
+                            mostrarEnlaceVerDetalles={true} 
                         />
                         ))}
                     </div>
