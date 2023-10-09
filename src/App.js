@@ -10,6 +10,24 @@ import ResultadoBusqueda from "./screens/ResultadoBusqueda/ResultadoBusqueda";
 import NotFound from "./screens/NotFound/NotFound";
 
 function App() {
+  function register(email, pass){
+    auth.createUserWithEmailAndPassword(email, pass)
+    .then(response =>{
+      this.setState({registered: true});
+    })
+    .catch(error => {
+      this.setState({error: 'Fallo en el registro.'})
+    })
+  }
+  function login (email,pass){
+    auth.signInWithEmailAndPassword(email, pass)
+    .then(response =>{
+      this.setState({loggedIn: true});
+    })
+    .catch(error => {
+      this.setState({error: 'Credenciales invalidas.'})
+    })
+  }
   return (
     <div className="App">
       <BrowserRouter>
