@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
+import {auth} from ".src/firebase/firebase"
 import Home from "./screens/Home/Home";
 import Favoritos from "./screens/Favoritos/Favoritos";
 import Pelicula from "./screens/DetallePelicula/DetallePelicula";
